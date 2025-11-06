@@ -35,7 +35,6 @@ dfMatch3['Score'] = pd.to_numeric(dfMatch3['Score'], errors='coerce')
 
 ## 
 
-@st.cache_data(ttl=60)  # refresh every 60 seconds
 def load_leaderboard():
     df = conn.read(spreadsheet=url, worksheet="1405471253")
     df.index += 1
