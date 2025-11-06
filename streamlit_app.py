@@ -27,7 +27,9 @@ dfMatches = conn.read(spreadsheet = url, worksheet = "1358750119")
 dfMatches = dfMatches.astype(str)
 
 dfMatch1 = dfMatches.head(2)
+dfMatch1['Score'] = pd.to_numeric(dfMatch1['Score'], errors='coerce')
 dfMatch2 = dfMatches.iloc[2:4]
+dfMatch2['Score'] = pd.to_numeric(dfMatch2['Score'], errors='coerce')
 dfMatch3 = dfMatches.iloc[4:6]
 dfMatch3['Score'] = pd.to_numeric(dfMatch3['Score'], errors='coerce')
 
