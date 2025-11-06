@@ -35,6 +35,17 @@ dfMatch3['Score'] = pd.to_numeric(dfMatch3['Score'], errors='coerce')
 
 ## 
 
+@st.cache_data(ttl=60)  # refresh every 60 seconds
+def load_leaderboard():
+    df = conn.read(spreadsheet=url, worksheet="1405471253")
+    df.index += 1
+    df.index.name = "Rank"
+    df['Change'] = df['Change'].fillna(0)
+    df.drop(df.tail(1).index, inplace=True)
+    df = df.astype({'Change': 'int', 'Games': 'int', 'Wins': 'int', 'Losses': 'int'})
+    return df
+
+
 def make_teams(activePlayers):
     players = activePlayers
     
@@ -134,9 +145,10 @@ def home_page():
     st.title("Leaderboard")
     st.subheader("Matches played: 3")
     
-    # st.dataframe(df)
+    dfLeaderboard = load_leaderboard()  # <— Always reloads fresh data
     
-    st.dataframe(dfLeaderboard.style.applymap(color_format, subset = ['Change']), height = 35 * len(dfLeaderboard) + 38)
+    st.dataframe(dfLeaderboard.style.applymap(color_format, subset=['Change']), 
+                 height = 35 * len(dfLeaderboard) + 38)
     
 def match_page():
     st.title("Match History")
@@ -205,5 +217,5 @@ pg = st.navigation({"Stats": [leaderboard, matchHistory],
 
 pg.run()
 
-st.sidebar.markdown("# Games played: 2")
-st.sidebar.markdown("# Next game: April 18th")
+st.sidebar.markdown("# Games played: 3")
+st.sidebar.markdown("# Next game: November 7th")
