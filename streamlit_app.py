@@ -27,7 +27,8 @@ dfMatches = conn.read(spreadsheet = url, worksheet = "1358750119")
 dfMatches = dfMatches.astype(str)
 
 dfMatch1 = dfMatches.head(2)
-dfMatch2 = dfMatches.tail(2)
+dfMatch2 = dfMatches.iloc[2:4]
+dfMatch3 = dfMatches.iloc[4:6]
 
 ## 
 
@@ -128,7 +129,7 @@ def color_format(value):
 
 def home_page():
     st.title("Leaderboard")
-    st.subheader("Matches played: 2")
+    st.subheader("Matches played: 3")
     
     # st.dataframe(df)
     
@@ -136,10 +137,11 @@ def home_page():
     
 def match_page():
     st.title("Match History")
-    st.subheader("Matches played: 2")
+    st.subheader("Matches played: 3")
     
     st.dataframe(dfMatch1.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
     st.dataframe(dfMatch2.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
+    st.dataframe(dfMatch3.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
     
 def matchmaking():
     st.title("Matchmaking tool")
