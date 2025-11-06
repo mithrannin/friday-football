@@ -150,8 +150,7 @@ def home_page():
 
     dfLeaderboard = load_leaderboard()
 
-    st.write("DEBUG: Data loaded at", pd.Timestamp.now())
-    st.write(dfLeaderboard.head())
+    st.write(" Data loaded at", pd.Timestamp.now())
 
     st.dataframe(dfLeaderboard.style.applymap(color_format, subset=['Change']), 
                  height=35 * len(dfLeaderboard) + 38)
