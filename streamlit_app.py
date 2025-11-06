@@ -36,7 +36,11 @@ dfMatch3['Score'] = pd.to_numeric(dfMatch3['Score'], errors='coerce')
 ## 
 
 def load_leaderboard():
-    df = conn.read(spreadsheet=url, worksheet="1405471253")
+    df = conn.read(
+        spreadsheet=url,
+        worksheet="1405471253",
+        ttl=0  # ensures fresh read
+    )
     df.index += 1
     df.index.name = "Rank"
     df['Change'] = df['Change'].fillna(0)
@@ -143,11 +147,14 @@ def color_format(value):
 def home_page():
     st.title("Leaderboard")
     st.subheader("Matches played: 3")
-    
-    dfLeaderboard = load_leaderboard()  # <— Always reloads fresh data
-    
+
+    dfLeaderboard = load_leaderboard()
+
+    st.write("DEBUG: Data loaded at", pd.Timestamp.now())
+    st.write(dfLeaderboard.head())
+
     st.dataframe(dfLeaderboard.style.applymap(color_format, subset=['Change']), 
-                 height = 35 * len(dfLeaderboard) + 38)
+                 height=35 * len(dfLeaderboard) + 38)
     
 def match_page():
     st.title("Match History")
