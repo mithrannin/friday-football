@@ -29,6 +29,7 @@ dfMatches = dfMatches.astype(str)
 dfMatch1 = dfMatches.head(2)
 dfMatch2 = dfMatches.iloc[2:4]
 dfMatch3 = dfMatches.iloc[4:6]
+dfMatch3['Score'] = pd.to_numeric(dfMatch3['Score'], errors='coerce')
 
 ## 
 
