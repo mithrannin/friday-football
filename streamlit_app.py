@@ -32,6 +32,8 @@ dfMatch2 = dfMatches.iloc[2:4]
 dfMatch2['Score'] = pd.to_numeric(dfMatch2['Score'], errors='coerce')
 dfMatch3 = dfMatches.iloc[4:6]
 dfMatch3['Score'] = pd.to_numeric(dfMatch3['Score'], errors='coerce')
+dfMatch4 = dfMatches.iloc[6:8]
+dfMatch4['Score'] = pd.to_numeric(dfMatch4['Score'], errors='coerce')
 
 ## 
 
@@ -146,7 +148,7 @@ def color_format(value):
 
 def home_page():
     st.title("Leaderboard")
-    st.subheader("Matches played: 3")
+    st.subheader("Matches played: 4")
 
     dfLeaderboard = load_leaderboard()
 
@@ -157,7 +159,7 @@ def home_page():
     
 def match_page():
     st.title("Match History")
-    st.subheader("Matches played: 3")
+    st.subheader("Matches played: 4")
     
     st.dataframe(dfMatch1.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
     st.dataframe(dfMatch2.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
@@ -222,5 +224,5 @@ pg = st.navigation({"Stats": [leaderboard, matchHistory],
 
 pg.run()
 
-st.sidebar.markdown("# Games played: 3")
-st.sidebar.markdown("# Next game: November 7th")
+st.sidebar.markdown("# Games played: 4")
+st.sidebar.markdown("# Next game: November 14th")
