@@ -164,6 +164,7 @@ def match_page():
     st.dataframe(dfMatch1.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
     st.dataframe(dfMatch2.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
     st.dataframe(dfMatch3.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
+    st.dataframe(dfMatch4.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
     
 def matchmaking():
     st.title("Matchmaking tool")
