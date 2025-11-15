@@ -34,6 +34,8 @@ dfMatch3 = dfMatches.iloc[4:6]
 dfMatch3['Score'] = pd.to_numeric(dfMatch3['Score'], errors='coerce')
 dfMatch4 = dfMatches.iloc[6:8]
 dfMatch4['Score'] = pd.to_numeric(dfMatch4['Score'], errors='coerce')
+dfMatch5 = dfMatches.iloc[8:10]
+dfMatch5['Score'] = pd.to_numeric(dfMatch5['Score'], errors='coerce')
 
 ## 
 
@@ -165,6 +167,7 @@ def match_page():
     st.dataframe(dfMatch2.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
     st.dataframe(dfMatch3.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
     st.dataframe(dfMatch4.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
+    st.dataframe(dfMatch5.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
     
 def matchmaking():
     st.title("Matchmaking tool")
