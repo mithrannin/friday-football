@@ -150,7 +150,7 @@ def color_format(value):
 
 def home_page():
     st.title("Leaderboard")
-    st.subheader("Matches played: 4")
+    st.subheader("Matches played: 5")
 
     dfLeaderboard = load_leaderboard()
 
@@ -161,7 +161,7 @@ def home_page():
     
 def match_page():
     st.title("Match History")
-    st.subheader("Matches played: 4")
+    st.subheader("Matches played: 5")
     
     st.dataframe(dfMatch1.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
     st.dataframe(dfMatch2.style.highlight_max(subset = ['Score'], color = 'palegreen'), hide_index=True)
@@ -228,5 +228,5 @@ pg = st.navigation({"Stats": [leaderboard, matchHistory],
 
 pg.run()
 
-st.sidebar.markdown("# Games played: 4")
-st.sidebar.markdown("# Next game: November 14th")
+st.sidebar.markdown("# Games played: 5")
+st.sidebar.markdown("# Next game: November 21st")
