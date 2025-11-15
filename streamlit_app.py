@@ -49,7 +49,7 @@ def load_leaderboard():
     df.index.name = "Rank"
     df['Change'] = df['Change'].fillna(0)
     df.drop(df.tail(1).index, inplace=True)
-    df = df.astype({'Change': 'int', 'Games': 'int', 'Wins': 'int', 'Losses': 'int'})
+    df = df.astype({'Change': 'int', 'Games': 'int', 'Wins': 'int', 'Losses': 'int', 'Draws': 'int'})
     return df
 
 
